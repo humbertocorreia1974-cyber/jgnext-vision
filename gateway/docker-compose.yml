@@ -1,0 +1,11 @@
+# Gateway de video-IA self-hosted - roda na rede do cliente (onde as cameras
+# estao), nao na Vercel (serverless nao mantem processo vivo). A deteccao
+# roda local (OpenCV DNN, Apache 2.0) dentro do proprio container - nao
+# depende de nenhum outro servico. Ver VIDEO-IA-SETUP.md.
+services:
+  bridge:
+    build: .
+    container_name: video-ia-bridge
+    restart: unless-stopped
+    env_file:
+      - .env
